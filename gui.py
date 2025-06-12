@@ -15,7 +15,7 @@ class SlotGUI:
         self.setup_style()
         self.setup_ui()
 
- def setup_style(self):
+    def setup_style(self):
         style = ttk.Style()
         style.theme_use("clam")
         style.configure("TLabel", background="#1c1c1c", foreground="#f1f1f1", font=("Consolas", 12))
@@ -23,7 +23,7 @@ class SlotGUI:
         style.map("TButton", background=[("active", "#00ffcc")], foreground=[("active", "#000")])
         style.configure("Header.TLabel", font=("Consolas", 16, "bold"), foreground="#00ffcc")
 
- def setup_ui(self):
+    def setup_ui(self):
         ttk.Label(self.root, text="🧨 Deposit Amount:", style="Header.TLabel").grid(row=0, column=0, sticky="w", padx=10)
         self.deposit_entry = ttk.Entry(self.root)
         self.deposit_entry.grid(row=0, column=1, padx=10)
@@ -48,25 +48,48 @@ class SlotGUI:
         self.balance_label = tk.Label(self.root, text="💵 Balance: $0", fg="#ffffff", bg="#1c1c1c", font=("Consolas", 14, "bold"))
         self.balance_label.grid(row=6, column=0, columnspan=3, pady=5)
 
+    def deposit(self):
+        try:
+            amount = int(self.deposit_entry.get())
+            if amount > 0:
+                self.wallet.deposit(amount)
+                self.update_balance()
+                self.deposit_entry.delete(0, tk.END)
+            else:
+                messagebox.showwarning("Oops", "💢 Enter more than $0!")
+        except ValueError:
+            messagebox.showwarning("Oops", "⚠️ Numbers only boss!")
 
-def deposit(self):
-    try:
-        amount = int(self.deposit_entry.get())
-        if amount > 0:
-            self.wallet.deposit(amount)
+    def update_balance(self):
+        self.balance_label.config(text=f"💵 Balance: ${self.wallet.balance}")
+
+    def spin(self):
+        try:
+            lines = int(self.lines_entry.get())
+            bet = int(self.bet_entry.get())
+
+            Validator.validate_lines(lines)
+            Validator.validate_bet(bet)
+            total_bet = bet * lines
+
+            if not self.wallet.can_afford(total_bet):
+                messagebox.showwarning("Kulang", "🚫 Not enough cash, pare.")
+                return
+
+            self.wallet.withdraw(total_bet)
+            columns = self.machine.get_spin_result()
+            self.slot_output.config(text=self.machine.format_slots(columns))
+
+            winnings, winning_lines = self.machine.calculate_winnings(columns, lines, bet)
+            self.wallet.deposit(winnings)
             self.update_balance()
-            self.deposit_entry.delete(0, tk.END)
-        else:
-            messagebox.showwarning("Oops", "💢 Enter more than $0!")
-    except ValueError:
-        messagebox.showwarning("Oops", "⚠️ Numbers only boss!")
 
-def update_balance(self):
-    self.balance_label.config(text=f"💵 Balance: ${self.wallet.balance}")
+            if winnings > 0:
+                self.result_label.config(text=f"🔥 YOU WON ${winnings} on line(s): {', '.join(map(str, winning_lines))}")
+            else:
+                self.result_label.config(text="😞 Walang panalo. Spin ulit!")
 
-def spin(self):
-    try:
-        lines = int(self.lines_entry.get())
-        bet = int(self.bet_entry.get())
-        Validator.validate_lines(lines)
-        Validator.validate_bet(bet)
+        except ValueError:
+            messagebox.showwarning("Ano 'yan", "🔢 Bet and line must be numbers!")
+        except Exception as error:
+            messagebox.showwarning("Error", str(error))
