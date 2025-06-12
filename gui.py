@@ -63,3 +63,8 @@ def deposit(self):
 
 def update_balance(self):
     self.balance_label.config(text=f"💵 Balance: ${self.wallet.balance}")
+
+def spin(self):
+    try:
+        lines = int(self.lines_entry.get())
+        bet = int(self.bet_entry.get())
