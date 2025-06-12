@@ -60,3 +60,6 @@ def deposit(self):
             messagebox.showwarning("Oops", "💢 Enter more than $0!")
     except ValueError:
         messagebox.showwarning("Oops", "⚠️ Numbers only boss!")
+
+def update_balance(self):
+    self.balance_label.config(text=f"💵 Balance: ${self.wallet.balance}")
