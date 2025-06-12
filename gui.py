@@ -68,3 +68,5 @@ def spin(self):
     try:
         lines = int(self.lines_entry.get())
         bet = int(self.bet_entry.get())
+        Validator.validate_lines(lines)
+        Validator.validate_bet(bet)
