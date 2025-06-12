@@ -47,3 +47,16 @@ class SlotGUI:
 
         self.balance_label = tk.Label(self.root, text="💵 Balance: $0", fg="#ffffff", bg="#1c1c1c", font=("Consolas", 14, "bold"))
         self.balance_label.grid(row=6, column=0, columnspan=3, pady=5)
+
+
+def deposit(self):
+    try:
+        amount = int(self.deposit_entry.get())
+        if amount > 0:
+            self.wallet.deposit(amount)
+            self.update_balance()
+            self.deposit_entry.delete(0, tk.END)
+        else:
+            messagebox.showwarning("Oops", "💢 Enter more than $0!")
+    except ValueError:
+        messagebox.showwarning("Oops", "⚠️ Numbers only boss!")
