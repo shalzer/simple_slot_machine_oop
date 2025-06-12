@@ -9,3 +9,8 @@ class SlotGUI:
         self.root = root
         self.root.title("🎰 Maangas Slot Machine")
         self.root.configure(bg="#1c1c1c")
+
+        self.wallet = Wallet()
+        self.machine = SlotMachine()
+        self.setup_style()
+        self.setup_ui()
