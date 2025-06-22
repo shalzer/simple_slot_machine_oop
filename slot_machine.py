@@ -21,3 +21,4 @@ class SlotMachine:
                 column.append(value)
 
             columns.append(column)
+        return columns
