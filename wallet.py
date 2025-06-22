@@ -6,3 +6,5 @@ class Wallet:
         self.balance += amount
 
     def withdraw(self, amount):
+        if self.can_afford(amount):
+            self.balance -= amount
