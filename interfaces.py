@@ -6,3 +6,6 @@ class Spinable(ABC):
         pass
 
 class Valuable(ABC):
+    @abstractmethod
+    def get_value(self, symbol):
+        pass
