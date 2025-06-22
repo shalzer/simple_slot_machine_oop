@@ -24,3 +24,9 @@ class SlotMachine:
         return columns
 
     def format_slots(self, columns):
+        lines = []
+        for row in range(self.rows):
+            line = " | ".join(columns[col][row] for col in range(self.cols))
+            lines.append(line)
+
+        return "\n".join(lines)
