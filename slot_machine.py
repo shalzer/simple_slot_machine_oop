@@ -22,3 +22,5 @@ class SlotMachine:
 
             columns.append(column)
         return columns
+
+    def format_slots(self, columns):
