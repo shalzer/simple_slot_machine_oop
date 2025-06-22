@@ -11,3 +11,5 @@ class Valuable(ABC):
         pass
 
 class Accountable(ABC):
+    @abstractmethod
+    def deposit(self, amount):
