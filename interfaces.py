@@ -18,3 +18,7 @@ class Accountable(ABC):
     @abstractmethod
     def withdraw(self, amount):
         pass
+
+    @abstractmethod
+    def can_afford(self, amount):
+        pass
