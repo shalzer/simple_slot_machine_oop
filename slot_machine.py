@@ -32,3 +32,13 @@ class SlotMachine:
         return "\n".join(lines)
 
     def calculate_winnings(self, columns, lines, bet):
+        winnings = 0
+        winning_lines = []
+
+        for line in range(lines):
+            symbol = columns[0][line]
+            if all(column[line] == symbol for column in columns):
+                winnings += self.symbols.get_value(symbol) * bet
+                winning_lines.append(line + 1)
+
+        return winnings, winning_lines
