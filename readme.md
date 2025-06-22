@@ -39,7 +39,4 @@ Make sure Python and Tkinter are installed.
 - Modified[ ](https://youtu.be/NpmFbWO6HPU?si=zxf6-p8AUV4CCIo3)by **Hannah Liwanag**
 -
 
----
-
-Let me know if you want an [executable ](f)[`.exe`](f) version or [add sound effects](f) for total casino vibes. 🎶
 
