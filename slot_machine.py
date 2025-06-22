@@ -6,3 +6,5 @@ class SlotMachine:
         self.symbols = SymbolSet()
         self.rows = 3
         self.cols = 3
+
+    def get_spin_result(self):
