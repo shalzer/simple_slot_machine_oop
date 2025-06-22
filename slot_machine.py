@@ -30,3 +30,5 @@ class SlotMachine:
             lines.append(line)
 
         return "\n".join(lines)
+
+    def calculate_winnings(self, columns, lines, bet):
