@@ -22,7 +22,7 @@ I modified Tim's original code and made it **mas maangas** by:
 ├── wallet.py            # Handles deposit, withdrawal, balance check
 ├── validator.py         # Input validation rules
 ├── interfaces.py        # Abstract base classes to show OOP design
-├── README.md            # You are here 😎
+├── README.md            # You are here 
 ```
 
 ## 🚀 How to Run
@@ -37,6 +37,5 @@ Make sure Python and Tkinter are installed.
 
 - Original project idea from [Tech With Ti](https://youtu.be/NpmFbWO6HPU?si=zxf6-p8AUV4CCIo3)[m](https://youtu.be/NpmFbWO6HPU?si=zxf6-p8AUV4CCIo3)
 - Modified[ ](https://youtu.be/NpmFbWO6HPU?si=zxf6-p8AUV4CCIo3)by **Hannah Liwanag**
--
 
 
